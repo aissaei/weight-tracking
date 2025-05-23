@@ -21,6 +21,7 @@ if uploaded_file is not None:
     # Convert time column to datetime
     df[time_col] = pd.to_datetime(df[time_col])
     df = df.sort_values(by=time_col)
+    df[weight_col] = df[weight_col].str.replace('lb', '').astype(float)
 
     # 3. Average multiple observations per day
     daily_df = df.groupby(df[time_col].dt.date)[weight_col].mean().reset_index()
