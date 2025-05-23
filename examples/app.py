@@ -59,8 +59,10 @@ if uploaded_file is not None:
         # Regression formula
         slope = model.coef_[0]
         intercept = model.intercept_
+        r_squared = model.score(X, y)
         formula = f"y = {slope:.2f}x + {intercept:.2f}"
-        ax.text(0.05, 0.95, formula, transform=ax.transAxes, fontsize=10, verticalalignment='top', color='red')
+        ax.text(0.05, 0.9, formula, transform=ax.transAxes, fontsize=10, verticalalignment='top', color='red')
+        ax.text(0.05, 0.8, r_squared, transform=ax.transAxes, fontsize=10, verticalalignment='top', color='red')
 
         # 5. Average weight change per week
         days = (reg_df['date'].max() - reg_df['date'].min()).days
