@@ -61,15 +61,15 @@ if uploaded_file is not None:
         intercept = model.intercept_
         r_squared = model.score(X, y)
         formula = f"y = {slope:.2f}x + {intercept:.2f}"
-        ax.text(0.05, 0.8, formula, transform=ax.transAxes, fontsize=10, verticalalignment='top', color='red')
-        ax.text(0.05, 0.7, r_squared, transform=ax.transAxes, fontsize=10, verticalalignment='top', color='red')
+        ax.text(0.05, 0.9, formula, transform=ax.transAxes, fontsize=10, verticalalignment='top', color='red')
+        ax.text(0.05, 0.85, round(r_squared,1), transform=ax.transAxes, fontsize=10, verticalalignment='top', color='green')
 
         # 5. Average weight change per week
         days = (reg_df['date'].max() - reg_df['date'].min()).days
         total_change = y[-1] - y[0]
         weeks = days / 7 if days > 0 else 1
         weekly_change = total_change / weeks if weeks != 0 else 0
-        ax.text(0.05, 0.88, f"Avg weight change/week: {weekly_change:.2f}", transform=ax.transAxes, fontsize=10, color='blue')
+        ax.text(0.05, 0.95, f"Avg weight change/week: {weekly_change:.2f}", transform=ax.transAxes, fontsize=10, color='blue')
     else:
         st.warning("Not enough data points for regression between selected dates.")
 
