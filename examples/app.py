@@ -62,7 +62,7 @@ if uploaded_file is not None:
         r_squared = model.score(X, y)
         formula = f"y = {slope:.2f}x + {intercept:.2f}"
         ax.text(0.05, 0.9, formula, transform=ax.transAxes, fontsize=10, verticalalignment='top', color='red')
-        ax.text(0.05, 0.85, round(r_squared,1), transform=ax.transAxes, fontsize=10, verticalalignment='top', color='green')
+        ax.text(0.05, 0.85, f"R2 is {round(r_squared, 2)}", transform=ax.transAxes, fontsize=10, verticalalignment='top', color='green')
 
         # 5. Average weight change per week
         days = (reg_df['date'].max() - reg_df['date'].min()).days
